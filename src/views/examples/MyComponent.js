@@ -2,35 +2,35 @@ import React from "react";
 
 class MyComponent extends React.Component {
     state = {
-        name: 'Chien',
-        channel: 'hoc IT tren ytb'
+        firstname: 'Ngo',
+        lastname: 'Chien',
     }
-    HandleOnChange = (e) => {
+    HandleChangeFirstName = (e) => {
         this.setState({
-            name: e.target.value,
-
-            channel: e.target.value,
-        })
+            firstname: e.target.value
+        });
     }
-    HandleClick = (e) => {
-        alert('click me')
+    HandleChangeLastName = (e) => {
+        this.setState({
+            lastname: e.target.value
+        });
+    }
+    HandeSubmit = (e) => {
+        e.preventDefault();
+        console.log(">>>Chech data:", this.state)
     }
     render() {
         return (
             <>
-                <div className="first">
-                    <input type="text" onChange={(e) => this.HandleOnChange(e)}></input>
-                    My name is : {this.state.name};
-                </div>
-                <div className="second">
-                    My channel is : {this.state.channel};
-                </div>
-                <div className="third">
-                    <button onClick={(e) => this.HandleClick(e)}>Click me</button>
-                </div>
+                <form>
+                    <label htmlFor="fname">First name:</label><br />
+                    <input type="text" value={this.state.firstname} onChange={(e) => this.HandleChangeFirstName(e)} /><br />
+                    <label htmlFor="lname">Last name:</label><br />
+                    <input type="text" value={this.state.lastname} onChange={(e) => this.HandleChangeLastName(e)} /><br />
+                    <input type="submit" value="Submit" onClick={(e) => this.HandeSubmit(e)} />
+                </form>
             </>
         )
-
     }
 }
 export default MyComponent
