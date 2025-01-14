@@ -1,7 +1,7 @@
 import React from "react";
 class ChildComponent extends React.Component {
     state = {
-        showJobs: false
+        showJobs: true
     }
     HandleChangeFirstName = (e) => {
         this.setState({
@@ -23,6 +23,9 @@ class ChildComponent extends React.Component {
             showJobs: !this.state.showJobs
         })
     }
+    HandleDelete = (job) => {
+        this.props.DeleteJob(job)
+    }
     render() {
         let { arrJob } = this.props;
         let { showJobs } = this.state;
@@ -35,9 +38,9 @@ class ChildComponent extends React.Component {
                     :
                     <>
                         <div className="job-list">
-                            {arrJob.map((job) => {
+                            {arrJob.map((job, index) => {
                                 return (
-                                    <div key={job.id}>{job.title} - {job.salary}</div>
+                                        <div key={job.id+1}>{job.title} - {job.salary}<span onClick={() => this.HandleDelete(job)}>&nbsp; X</span></div>
                                 )
                             })}
                         </div>
