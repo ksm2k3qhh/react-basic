@@ -9,16 +9,22 @@ class MyComponent extends React.Component {
         lastName: 'Chien',
         arrJob:
             [
-                { jobid: "abcjob1", jobname: 'Developer', salary: '500$' },
-                { jobid: "abcjob2", jobname: 'Tester', salary: '300$' },
-                { jobid: "abcjob3", jobname: 'Designer', salary: '400$' },
+                { id: "abcjob1", title: 'Developer', salary: '500$' },
+                { id: "abcjob2", title: 'Tester', salary: '300$' },
+                { id: "abcjob3", title: 'Designer', salary: '400$' },
             ]
+    }
+
+    AddNewJob = (job) => {
+        this.setState({
+            arrJob: [...this.state.arrJob, job]
+        })
     }
 
     render() {
         return (
             <>
-                <AddComponent />
+                <AddComponent AddNewJob={this.AddNewJob} />
 
                 <ChildComponent arrJob={this.state.arrJob} />
             </>

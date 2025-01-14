@@ -37,7 +37,7 @@ class ChildComponent extends React.Component {
                         <div className="job-list">
                             {arrJob.map((job) => {
                                 return (
-                                    <div key={job.jobid}>{job.jobname} - {job.salary}</div>
+                                    <div key={job.id}>{job.title} - {job.salary}</div>
                                 )
                             })}
                         </div>
@@ -45,6 +45,7 @@ class ChildComponent extends React.Component {
                             <button onClick={() => this.HandeShowHide()}>Hide</button>
                         </div>
                     </>
+
                 }
             </>
         )
