@@ -2,8 +2,7 @@ import React from "react";
 
 class ChildComponent extends React.Component {
     state = {
-        firstname: 'Ngo',
-        lastname: 'Chien',
+        showJobs: false
     }
     HandleChangeFirstName = (e) => {
         this.setState({
@@ -20,16 +19,34 @@ class ChildComponent extends React.Component {
         console.log(">>>Chech data:", this.state)
     }
 
+    HandeShowHide = () => {
+        this.setState({
+            showJobs: !this.state.showJobs
+        })
+    }
     render() {
-        console.log("check props:", this.props);
-        let { firstName, lastName, arrJob } = this.props;
+        let { arrJob } = this.props;
+        let { showJobs } = this.state;
         return (
             <>
-                {arrJob.map((job) => {
-                    return (
-                        <div key={job.jobid}>{job.jobname} - {job.salary}</div>
-                    )
-                })}
+                {showJobs === false ?
+                    <div>
+                        <button onClick={() => this.HandeShowHide()}>Show</button>
+                    </div>
+                    :
+                    <>
+                        <div className="job-list">
+                            {arrJob.map((job) => {
+                                return (
+                                    <div key={job.jobid}>{job.jobname} - {job.salary}</div>
+                                )
+                            })}
+                        </div>
+                        <div>
+                            <button onClick={() => this.HandeShowHide()}>Hide</button>
+                        </div>
+                    </>
+                }
             </>
         )
     }

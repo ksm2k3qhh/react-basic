@@ -35,7 +35,7 @@ class MyComponent extends React.Component {
                     <input type="text" value={this.state.lastName} onChange={(e) => this.HandleChangeLastName(e)} /><br />
                     <input type="submit" value="Submit" onClick={(e) => this.HandeSubmit(e)} />
                 </form>
-                <ChildComponent firstName={this.state.firstName} lastName={this.state.lastName} arrJob={this.state.arrJob} />
+                <ChildComponent  arrJob={this.state.arrJob} />
             </>
         )
     }
