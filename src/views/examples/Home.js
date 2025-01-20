@@ -1,4 +1,5 @@
 import React from "react";
+import Color from "../hoc/Color";
 
 class Home extends React.Component{
     render(){
@@ -10,4 +11,4 @@ class Home extends React.Component{
     }
 }
 
-export default Home
+export default Color(Home)
